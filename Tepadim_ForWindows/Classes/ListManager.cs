@@ -11,8 +11,9 @@ namespace Tepadim_ForWindows
 {
     public static class ListManager
     {
-        public static string MakeList()
+        public static List<string> MakeList()
         {
+            List<string> lineList = new List<string>();
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Text files (*.txt)|*.txt";
             if (openFileDialog.ShowDialog() == true)
@@ -21,7 +22,6 @@ namespace Tepadim_ForWindows
                 StreamReader sr = new StreamReader(openFileDialog.FileName);
                 StringBuilder builder = new StringBuilder();
                 FileInfo info = new FileInfo(openFileDialog.FileName);
-                List<string> lineList = new List<string>();
 
                 long fileLength = info.Length;
                 long charsRead = 0;
@@ -44,23 +44,25 @@ namespace Tepadim_ForWindows
                             sinceLast++;
                         }
                     }
-                    //Turn the output to a string, add it to our list,
-                    //then reset stuff. Any further string processing can happen here: trimming whitespace, empty strings, newlines etc
-                    string output = builder.ToString();   
+                    //Turn the output to a string, tidy it up, 
+                    //add it to our list, then reset stuff.
+                    string output = builder.ToString();
+                    output = output.Trim();
+                    output = output.Replace('\r', ' ');
+                    output = output.Replace('\n', ' ');
+                    output = output.Replace('\t', ' ');
                     lineList.Add(output);
                     //Trace.WriteLine("Adding line: " + output + ", total chars read:" + charsRead); <- a debug thing, we can remove
                     builder.Clear();
                     sinceLast = 0;
                 }
                 //We now have a list of strings. Now to turn them into a new .tpd file... eventually
-                //For now just return a random string m8
-                Random randomiser = new Random();
-                int i = randomiser.Next(0, lineList.Count);
-                return lineList[i];                               
+                //For now just return the list
+                return lineList;                               
             }
             else
             {
-                return "Void!";
+                return lineList;
             }
         }
 

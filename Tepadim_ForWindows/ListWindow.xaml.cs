@@ -20,6 +20,8 @@ namespace Tepadim_ForWindows
     /// </summary>
     public partial class ListWindow : Window
     {
+        private List<string> lineList;
+
         public ListWindow()
         {
             InitializeComponent();
@@ -38,15 +40,16 @@ namespace Tepadim_ForWindows
 
         private void loadButton_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            string path = ListManager.ReturnLists();
-            textBlock.Text = path;
+            Random randomiser = new Random();
+            int i = randomiser.Next(0, lineList.Count);
+            textBox.Text = lineList[i];
         }
 
         private void makeListButton_Click(object sender, RoutedEventArgs e)
         {
-            string tester = ListManager.MakeList();
-            textBox.Text = tester;
+            lineList = ListManager.MakeList();
+            textBlock.Text = "List loaded!";
+            loadButton.IsEnabled = true;
         }
     }
 }

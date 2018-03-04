@@ -11,7 +11,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Microsoft.Win32;
 
 namespace Tepadim_ForWindows
 {
@@ -21,6 +20,7 @@ namespace Tepadim_ForWindows
     public partial class ListWindow : Window
     {
         private List<string> lineList;
+        Random randomiser = new Random();
 
         public ListWindow()
         {
@@ -40,14 +40,15 @@ namespace Tepadim_ForWindows
 
         private void loadButton_Click(object sender, RoutedEventArgs e)
         {
-            Random randomiser = new Random();
             int i = randomiser.Next(0, lineList.Count);
-            textBox.Text = lineList[i];
+            listBox.Items.Add(lineList[i]);
+            listBox.SelectedIndex = listBox.Items.Count - 1;
+            listBox.ScrollIntoView(listBox.SelectedItem);
         }
 
         private void makeListButton_Click(object sender, RoutedEventArgs e)
         {
-            lineList = ListManager.MakeList();
+            lineList = ListManager.MakeList(15); //User can set
             textBlock.Text = "List loaded!";
             loadButton.IsEnabled = true;
         }

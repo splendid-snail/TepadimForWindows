@@ -11,7 +11,7 @@ namespace Tepadim_ForWindows
 {
     public static class ListManager
     {
-        public static List<string> MakeList()
+        public static List<string> MakeList(int phraseLength)
         {
             List<string> lineList = new List<string>();
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -33,7 +33,7 @@ namespace Tepadim_ForWindows
                     {
                         //Char reading code: Break 
                         char currentChar = (char)sr.Read();
-                        if ((sinceLast > 35) && (currentChar == ' '))
+                        if ((sinceLast > phraseLength) && (currentChar == ' '))
                         {
                             break;
                         }

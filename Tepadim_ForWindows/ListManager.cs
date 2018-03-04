@@ -11,7 +11,6 @@ namespace Tepadim_ForWindows
 {
     public static class ListManager
     {
-
         public static string MakeList()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -54,7 +53,7 @@ namespace Tepadim_ForWindows
                     sinceLast = 0;
                 }
                 //We now have a list of strings. Now to turn them into a new .tpd file... eventually
-                //For now just return a random string
+                //For now just return a random string m8
                 Random randomiser = new Random();
                 int i = randomiser.Next(0, lineList.Count);
                 return lineList[i];                               

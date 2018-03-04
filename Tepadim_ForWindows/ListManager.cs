@@ -49,7 +49,7 @@ namespace Tepadim_ForWindows
                     //then reset stuff. Any further string processing can happen here: trimming whitespace, empty strings, newlines etc
                     string output = builder.ToString();   
                     lineList.Add(output);
-                    //Trace.WriteLine("Adding line: " + output + ", total chars read:" + charsRead); <- a debug thing
+                    //Trace.WriteLine("Adding line: " + output + ", total chars read:" + charsRead); <- a debug thing, we can remove
                     builder.Clear();
                     sinceLast = 0;
                 }

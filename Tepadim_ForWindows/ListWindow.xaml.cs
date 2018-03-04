@@ -1,16 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Tepadim_ForWindows
 {
@@ -25,6 +15,15 @@ namespace Tepadim_ForWindows
         public ListWindow()
         {
             InitializeComponent();
+   
+        }
+
+        private void makeLine()
+        {
+            int i = randomiser.Next(0, lineList.Count);
+            listBox.Items.Add(lineList[i]);
+            listBox.SelectedIndex = listBox.Items.Count - 1;
+            listBox.ScrollIntoView(listBox.SelectedItem);
         }
 
         private void ListWindowFrame_Closed(object sender, EventArgs e)
@@ -35,22 +34,43 @@ namespace Tepadim_ForWindows
         private void ListWindowFrame_LocationChanged(object sender, EventArgs e)
         {
             this.Owner.Left = this.Left;
-            this.Owner.Top = this.Top;
+            this.Owner.Top = this.Top;            
         }
 
         private void loadButton_Click(object sender, RoutedEventArgs e)
         {
-            int i = randomiser.Next(0, lineList.Count);
-            listBox.Items.Add(lineList[i]);
-            listBox.SelectedIndex = listBox.Items.Count - 1;
-            listBox.ScrollIntoView(listBox.SelectedItem);
+            for (int i = 0; i < 5; i++)
+            {
+                makeLine();
+            }
+            listBox.Items.Add("");
         }
 
         private void makeListButton_Click(object sender, RoutedEventArgs e)
         {
             lineList = ListManager.MakeList(15); //User can set
-            textBlock.Text = "List loaded!";
-            loadButton.IsEnabled = true;
+            if (lineList[0] != "-1")
+            {
+                textBlock.Text = "List loaded!";
+                loadButton.IsEnabled = true;
+                scryButton.IsEnabled = true;
+            }
+            else
+            {
+                textBlock.Text = "List failed to load!";
+                loadButton.IsEnabled = false;
+                scryButton.IsEnabled = false;
+            }
+        }
+
+        private void scryButton_Click(object sender, RoutedEventArgs e)
+        {
+            makeLine();
+        }
+
+        private void backButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

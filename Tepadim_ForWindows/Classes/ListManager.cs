@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 using Microsoft.Win32;
-using System.Diagnostics;
 
 namespace Tepadim_ForWindows
 {
@@ -58,11 +54,13 @@ namespace Tepadim_ForWindows
                 }
                 //We now have a list of strings. Now to turn them into a new .tpd file... eventually
                 //For now just return the list
-                return lineList;                               
+                return lineList;
             }
             else
             {
-                return lineList;
+                string msg = "-1";
+                lineList.Add(msg);
+                return lineList;  
             }
         }
 

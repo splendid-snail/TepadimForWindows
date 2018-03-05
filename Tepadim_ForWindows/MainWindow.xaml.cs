@@ -24,5 +24,13 @@ namespace Tepadim_ForWindows
             listWindow.Show();            
             this.Hide();
         }
+
+        private void divineButton_Click(object sender, RoutedEventArgs e)
+        {
+            DivineWindow divineWindow = new DivineWindow();
+            divineWindow.Owner = this;
+            divineWindow.Show();
+            this.Hide();
+        }
     }
 }

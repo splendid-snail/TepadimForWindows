@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tepadim_ForWindows"
         mc:Ignorable="d"
-        Title="ListPage" Height="361" Width="484" Closed="ListWindowFrame_Closed" ResizeMode="NoResize" WindowStyle="ToolWindow" WindowStartupLocation="CenterOwner" LocationChanged="ListWindowFrame_LocationChanged">
+        Title="Lister" Height="361" Width="484" Closed="ListWindowFrame_Closed" ResizeMode="NoResize" WindowStyle="ToolWindow" WindowStartupLocation="CenterOwner" LocationChanged="ListWindowFrame_LocationChanged">
     <Grid>
         <Button x:Name="loadButton" Content="Random" HorizontalAlignment="Left" Margin="35,250,0,0" VerticalAlignment="Top" Width="74" Click="loadButton_Click" IsEnabled="False" />
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="115,291,0,0" TextWrapping="Wrap" Text="Awaiting list" VerticalAlignment="Top" Width="180"/>

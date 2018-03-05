@@ -3,6 +3,18 @@ using System.Text;
 using System.IO;
 using Microsoft.Win32;
 
+
+/*
+ *Eventually, this class should have:
+ *
+ * A master list that exists outside functions 
+ * MakeList() adds the contents of a txt file (prevent duplicates here or in UI), returns bool
+ * FetchList() returns the whole thing
+ * ClearList() You get the idea 
+ */
+
+
+
 namespace Tepadim_ForWindows
 {
     public static class ListManager
@@ -52,7 +64,7 @@ namespace Tepadim_ForWindows
                     builder.Clear();
                     sinceLast = 0;
                 }
-                //We now have a list of strings. Now to turn them into a new .tpd file... eventually
+                //We now have a list of strings.
                 //For now just return the list
                 return lineList;
             }

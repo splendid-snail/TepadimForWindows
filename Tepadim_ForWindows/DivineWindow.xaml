@@ -1,19 +1,26 @@
-﻿<Window x:Class="Tepadim_ForWindows.DivineWindow"
+﻿<Window
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tepadim_ForWindows"
+        xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="Tepadim_ForWindows.DivineWindow"
         mc:Ignorable="d"
         Title="Divine" Height="345" Width="483" 
         ResizeMode="NoResize" WindowStyle="ToolWindow"
         WindowStartupLocation="CenterOwner"
         LocationChanged="ListWindowFrame_LocationChanged" Closed="Window_Closed">
-    <Grid>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="240" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="458"/>
+    <Grid IsEnabled="True">
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="215" Margin="10,10,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="445"/>
         <Button x:Name="loadButton" Content="Load" HorizontalAlignment="Left" Margin="10,255,0,0" VerticalAlignment="Top" Width="60" Height="57" Click="loadButton_Click"/>
-        <Label x:Name="label" Content="Ready" HorizontalAlignment="Left" Margin="75,270,0,0" VerticalAlignment="Top" Width="328"/>
-        <Button x:Name="divineButton" Content="Divine" HorizontalAlignment="Left" Margin="408,255,0,0" VerticalAlignment="Top" Width="60" Height="57" Click="divineButton_Click"/>
+        <Label x:Name="label" Content="Ready" HorizontalAlignment="Left" Margin="75,270,0,0" VerticalAlignment="Top" Width="270" Height="32"/>
+        <Button x:Name="divineButton" Content="Divine" HorizontalAlignment="Left" Margin="395,255,0,0" VerticalAlignment="Top" Width="60" Height="57" Click="divineButton_Click"/>
+        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="350,233,0,0" VerticalAlignment="Top" Width="105" SelectedIndex="1">
+            <System:String>Terse</System:String>
+            <System:String>Forthcoming</System:String>
+            <System:String>Overwhelming</System:String>
+        </ComboBox>
+
 
     </Grid>
 </Window>

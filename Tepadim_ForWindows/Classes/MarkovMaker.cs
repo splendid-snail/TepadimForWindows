@@ -9,7 +9,7 @@ namespace Tepadim_ForWindows
 {
     public static class MarkovMaker
     {
-        public static string Status = "Null";
+        public static string Status = "Dictionary not made!";
         private static IDictionary<string, string[]> Dictionary = new Dictionary<string, string[]>();
         private static bool DictionaryMade = false;
         private static Random randomiser = new Random();
@@ -25,6 +25,8 @@ namespace Tepadim_ForWindows
             if (openFileDialog.ShowDialog() == true)
             {
                 FileInfo info = new FileInfo(openFileDialog.FileName);
+                //We should probably do our list-tidying below. Now might be a good time to switch
+                //this array to a list throughout the function...
                 string[] wordListArray = File.ReadAllText(openFileDialog.FileName).Split(' ');
                 int wordListLength = wordListArray.Length;  
 
@@ -71,8 +73,7 @@ namespace Tepadim_ForWindows
         }
 
         public static string Divine(int length)
-        {
-            bool done = false;
+        {            
             string output = "";
 
             if (DictionaryMade)
@@ -87,6 +88,7 @@ namespace Tepadim_ForWindows
 
                 string nextKey = splitKey[1] + " " + thisValue;//Make the next key
                 int count = 0;
+                bool done = false;
 
                 while (!done)
                 {
@@ -100,12 +102,12 @@ namespace Tepadim_ForWindows
                         thisIndex = randomiser.Next(0, Dictionary.Count);
                         thisKey = Dictionary.ElementAt(thisIndex).Key;
                     }
-                    //Get to work, let's go 20 times to start with 
+                    //Get to work
                     thisValueArray = Dictionary.ElementAt(thisIndex).Value;
                     thisValue = thisValueArray[randomiser.Next(0, thisValueArray.Count())];
                     splitKey = thisKey.Split(' ');
                     output += splitKey[0] + " ";
-                    nextKey = splitKey[1] + " " + thisValue;//Make the next key
+                    nextKey = splitKey[1] + " " + thisValue;
                     count++;
                     if (count == length)
                     {
@@ -120,7 +122,7 @@ namespace Tepadim_ForWindows
                 Trace.WriteLine("Dictionary not made!");
                 return "Dictionary not made!";
             }
-            return "";
+            return "Dictionary not made!";
         }
     }
 }

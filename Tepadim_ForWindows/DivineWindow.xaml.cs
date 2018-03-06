@@ -33,7 +33,30 @@ namespace Tepadim_ForWindows
 
         private void divineButton_Click(object sender, RoutedEventArgs e)
         {
-            textBox.Text = MarkovMaker.Divine(20);
+            //Set length
+            int lengthChoice;
+            if (comboBox.SelectedIndex == 0)
+            {
+                lengthChoice = 10;
+            }
+            else if (comboBox.SelectedIndex == 1)
+            {
+                lengthChoice = 40;
+            }
+            else
+            {
+                lengthChoice = 100;
+            }
+
+            //Generate output
+            if (MarkovMaker.Divine(20) != "Dictionary not made!")
+            {
+                textBox.Text = MarkovMaker.Divine(lengthChoice);
+            }
+            else
+            {
+                label.Content = MarkovMaker.Status;
+            }
         }
     }
 }

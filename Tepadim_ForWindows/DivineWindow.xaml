@@ -12,6 +12,8 @@
     <Grid>
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="240" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="458"/>
         <Button x:Name="loadButton" Content="Load" HorizontalAlignment="Left" Margin="10,255,0,0" VerticalAlignment="Top" Width="60" Height="57" Click="loadButton_Click"/>
+        <Label x:Name="label" Content="Ready" HorizontalAlignment="Left" Margin="75,270,0,0" VerticalAlignment="Top" Width="328"/>
+        <Button x:Name="divineButton" Content="Divine" HorizontalAlignment="Left" Margin="408,255,0,0" VerticalAlignment="Top" Width="60" Height="57" Click="divineButton_Click"/>
 
     </Grid>
 </Window>

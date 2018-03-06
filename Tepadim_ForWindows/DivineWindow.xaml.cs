@@ -1,16 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Tepadim_ForWindows
 {
@@ -31,13 +20,20 @@ namespace Tepadim_ForWindows
 
         private void ListWindowFrame_LocationChanged(object sender, EventArgs e)
         {
-            Left = Owner.Left;
-            Top = Owner.Top;
+            Owner.Left = this.Left;
+            Owner.Top = this.Top;
         }
 
         private void loadButton_Click(object sender, RoutedEventArgs e)
         {
+            label.Content = "Loading...";
             MarkovMaker.ReadFile();
+            label.Content = MarkovMaker.Status;
+        }
+
+        private void divineButton_Click(object sender, RoutedEventArgs e)
+        {
+            textBox.Text = MarkovMaker.Divine(20);
         }
     }
 }

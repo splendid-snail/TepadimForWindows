@@ -9,24 +9,20 @@ namespace Tepadim_ForWindows
 {
     public static class MarkovMaker
     {
-        public static string Status = "Dictionary not made!";
-        private static IDictionary<string, string[]> Dictionary = new Dictionary<string, string[]>();
-        private static bool DictionaryMade = false;
+        public static string Status = "Ready";
+        public static bool DictionaryMade = false;
+        private static IDictionary<string, List<string>> Dictionary = new Dictionary<string, List<string>>();        
         private static Random randomiser = new Random();
         
-        public static bool ReadFile()
+        public static void ReadFile()
         {
-            List<string> wordList = new List<string>();
-            //The below should probably take a list rather than an array from the start,
-            //rather than messing around converting later??
-            IDictionary<string, string[]> dict = new Dictionary<string, string[]>();
+            IDictionary<string, List<string>> dict = new Dictionary<string, List<string>>();
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Text files (*.txt)|*.txt";
             if (openFileDialog.ShowDialog() == true)
             {
                 FileInfo info = new FileInfo(openFileDialog.FileName);
-                //We should probably do our list-tidying below. Now might be a good time to switch
-                //this array to a list throughout the function...
+                //We should probably do any list-tidying below. 
                 string[] wordListArray = File.ReadAllText(openFileDialog.FileName).Split(' ');
                 int wordListLength = wordListArray.Length;  
 
@@ -40,18 +36,16 @@ namespace Tepadim_ForWindows
                     if (dict.ContainsKey(thisKey))
                     {
                         Trace.WriteLine("Key " + thisKey + " already found!");
-                        string[] existingValue = dict[thisKey];                       
+                        List<string> existingValue = dict[thisKey];                       
                         //add wordThree
                         //Then set dict[thisKey] to the modified existingValue
-                        Trace.WriteLine("Adding new word to existing value");
-                        List<string> existingList = existingValue.ToList();
-                        existingList.Add(wordThree);
-                        existingValue = existingList.ToArray();
+                        Trace.WriteLine("Adding new word to existing value");                        
+                        existingValue.Add(wordThree);                        
                         dict[thisKey] = existingValue;    
                     }
                     else
                     {
-                        string[] thisValue = new string[] { wordThree };
+                        List<string> thisValue = new List<string> { wordThree };
                         dict.Add(thisKey, thisValue);
                     }
                 }
@@ -59,11 +53,7 @@ namespace Tepadim_ForWindows
                 Status = "Dictionary from " + openFileDialog.SafeFileName + " created";
                 Dictionary = dict;
                 DictionaryMade = true;
-                return true;
-            }
-            else
-            {
-                return false;
+                return;
             }
         }
 
@@ -76,7 +66,7 @@ namespace Tepadim_ForWindows
                 //Choose an initial dictionary value
                 int thisIndex = randomiser.Next(0, Dictionary.Count);//Random index
                 string thisKey = Dictionary.ElementAt(thisIndex).Key;//Get the key (two-word string)
-                string[] thisValueArray = Dictionary.ElementAt(thisIndex).Value;//Get the value (array of one-word strings)
+                List<string> thisValueArray = Dictionary.ElementAt(thisIndex).Value;//Get the value (array of one-word strings)
                 string thisValue = thisValueArray[randomiser.Next(0, thisValueArray.Count())];//Choose a random string from the array
                 string[] splitKey = thisKey.Split(' ');//Split the key into single words 
                 output += splitKey[0] + " ";//Add the first word to the output 
@@ -107,6 +97,7 @@ namespace Tepadim_ForWindows
                     if (count == length)
                     {
                         done = true;
+                        Trace.WriteLine("***NEW OUTPUT***");
                         Trace.WriteLine(output);
                         return output;
                     }

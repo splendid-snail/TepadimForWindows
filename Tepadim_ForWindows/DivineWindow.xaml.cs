@@ -11,6 +11,7 @@ namespace Tepadim_ForWindows
         public DivineWindow()
         {
             InitializeComponent();
+            label.Content = MarkovMaker.Status;
         }
 
         private void Window_Closed(object sender, EventArgs e)
@@ -33,7 +34,6 @@ namespace Tepadim_ForWindows
 
         private void divineButton_Click(object sender, RoutedEventArgs e)
         {
-            //Set length
             int lengthChoice= 10;
             if (comboBox.SelectedIndex == 0)
             {
@@ -48,8 +48,7 @@ namespace Tepadim_ForWindows
                 lengthChoice = 100;
             }
 
-            //Generate output
-            if (MarkovMaker.Divine(20) != "Dictionary not made!")
+            if (MarkovMaker.DictionaryMade)
             {
                 textBox.Text = MarkovMaker.Divine(lengthChoice);
             }

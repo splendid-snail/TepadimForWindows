@@ -32,5 +32,13 @@ namespace Tepadim_ForWindows
             divineWindow.Show();
             this.Hide();
         }
+
+        private void candleButton_Click(object sender, RoutedEventArgs e)
+        {
+            CandleWindow candleWindow = new CandleWindow();
+            candleWindow.Owner = this;
+            candleWindow.Show();
+            this.Hide();
+        }
     }
 }

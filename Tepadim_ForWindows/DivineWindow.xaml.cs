@@ -34,7 +34,7 @@ namespace Tepadim_ForWindows
         private void divineButton_Click(object sender, RoutedEventArgs e)
         {
             //Set length
-            int lengthChoice;
+            int lengthChoice= 10;
             if (comboBox.SelectedIndex == 0)
             {
                 lengthChoice = 10;

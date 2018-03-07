@@ -40,19 +40,14 @@ namespace Tepadim_ForWindows
                     if (dict.ContainsKey(thisKey))
                     {
                         Trace.WriteLine("Key " + thisKey + " already found!");
-                        string[] existingValue = dict[thisKey];
-                        //We now need to check if existingValue has wordThree in it... anywhere
-                        //If not, add wordThree
+                        string[] existingValue = dict[thisKey];                       
+                        //add wordThree
                         //Then set dict[thisKey] to the modified existingValue
-                        if (!existingValue.Contains(wordThree))
-                        {
-                            Trace.WriteLine("Adding new word to existing value");
-                            List<string> existingList = existingValue.ToList();
-                            existingList.Add(wordThree);
-                            existingValue = existingList.ToArray();
-                            dict[thisKey] = existingValue;                            
-                        }
-                        Trace.WriteLine("Same as current Value: " + existingValue[0]);
+                        Trace.WriteLine("Adding new word to existing value");
+                        List<string> existingList = existingValue.ToList();
+                        existingList.Add(wordThree);
+                        existingValue = existingList.ToArray();
+                        dict[thisKey] = existingValue;    
                     }
                     else
                     {

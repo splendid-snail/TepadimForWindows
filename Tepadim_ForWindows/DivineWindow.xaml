@@ -15,7 +15,7 @@
         <Button x:Name="loadButton" Content="Load" HorizontalAlignment="Left" Margin="10,255,0,0" VerticalAlignment="Top" Width="60" Height="57" Click="loadButton_Click"/>
         <Label x:Name="label" Content="Ready" HorizontalAlignment="Left" Margin="75,270,0,0" VerticalAlignment="Top" Width="270" Height="32"/>
         <Button x:Name="divineButton" Content="Divine" HorizontalAlignment="Left" Margin="395,255,0,0" VerticalAlignment="Top" Width="60" Height="57" Click="divineButton_Click"/>
-        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="350,233,0,0" VerticalAlignment="Top" Width="105" SelectedIndex="1">
+        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="350,233,0,0" VerticalAlignment="Top" Width="105" SelectedIndex="0">
             <System:String>Terse</System:String>
             <System:String>Forthcoming</System:String>
             <System:String>Overwhelming</System:String>

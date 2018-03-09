@@ -28,8 +28,9 @@ namespace Tepadim_ForWindows
         private void loadButton_Click(object sender, RoutedEventArgs e)
         {
             label.Content = "Loading...";
-            MarkovMaker.ReadFile();
+            MarkovMaker.AddToDictionary(true);
             label.Content = MarkovMaker.Status;
+            addButton.IsEnabled = true;
         }
 
         private void divineButton_Click(object sender, RoutedEventArgs e)
@@ -56,6 +57,12 @@ namespace Tepadim_ForWindows
             {
                 label.Content = MarkovMaker.Status;
             }
+        }
+
+        private void addButton_Click(object sender, RoutedEventArgs e)
+        {
+            MarkovMaker.AddToDictionary(false);
+            label.Content = MarkovMaker.Status;            
         }
     }
 }

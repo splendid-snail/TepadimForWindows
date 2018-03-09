@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Tepadim_ForWindows
 {
@@ -22,8 +23,15 @@ namespace Tepadim_ForWindows
             if (openFileDialog.ShowDialog() == true)
             {
                 FileInfo info = new FileInfo(openFileDialog.FileName);
-                //We should probably do any list-tidying below. 
-                string[] wordListArray = File.ReadAllText(openFileDialog.FileName).Split(' ');
+                string wholeText = File.ReadAllText(openFileDialog.FileName);
+                //Do you wish to see regex magic? Very well...
+                //Just replaces multiple newlines with a single newline for now
+                string pattern = @"\n+";
+                string replacement = "\n";
+                Regex regex = new Regex(pattern);
+                string trimmedText = regex.Replace(wholeText, replacement);
+
+                string[] wordListArray = trimmedText.Split(' ');
                 int wordListLength = wordListArray.Length;  
 
                 for (int i = 0; i < wordListLength - 2; i++)
@@ -34,12 +42,8 @@ namespace Tepadim_ForWindows
                     string thisKey = wordOne + " " + wordTwo;
                     
                     if (dict.ContainsKey(thisKey))
-                    {
-                        Trace.WriteLine("Key " + thisKey + " already found!");
-                        List<string> existingValue = dict[thisKey];                       
-                        //add wordThree
-                        //Then set dict[thisKey] to the modified existingValue
-                        Trace.WriteLine("Adding new word to existing value");                        
+                    {  
+                        List<string> existingValue = dict[thisKey];                 
                         existingValue.Add(wordThree);                        
                         dict[thisKey] = existingValue;    
                     }
@@ -49,7 +53,6 @@ namespace Tepadim_ForWindows
                         dict.Add(thisKey, thisValue);
                     }
                 }
-                Trace.WriteLine(dict.Count);
                 Status = "Dictionary from " + openFileDialog.SafeFileName + " created";
                 Dictionary = dict;
                 DictionaryMade = true;
@@ -73,9 +76,11 @@ namespace Tepadim_ForWindows
 
                 string nextKey = splitKey[1] + " " + thisValue;//Make the next key
                 int count = 0;
-                bool done = false;
+                string oldWord = "";
+                string evenOlderWord = "";
+                string newWordPicked = "";
 
-                while (!done)
+                while (count < length)
                 {
                     //Check we have it, if not get another random one:
                     if (Dictionary.ContainsKey(nextKey))
@@ -87,28 +92,41 @@ namespace Tepadim_ForWindows
                         thisIndex = randomiser.Next(0, Dictionary.Count);
                         thisKey = Dictionary.ElementAt(thisIndex).Key;
                     }
+
                     //Get to work
                     thisValueArray = Dictionary.ElementAt(thisIndex).Value;
                     thisValue = thisValueArray[randomiser.Next(0, thisValueArray.Count())];
                     splitKey = thisKey.Split(' ');
-                    output += splitKey[0] + " ";
-                    nextKey = splitKey[1] + " " + thisValue;
-                    count++;
-                    if (count == length)
+
+                    evenOlderWord = oldWord;
+                    oldWord = newWordPicked;
+                    newWordPicked = splitKey[0];  
+
+                    output += newWordPicked + " ";
+
+                    //Deal with endlessly repeating words... 
+                    if (newWordPicked == oldWord && oldWord == evenOlderWord)
                     {
-                        done = true;
-                        Trace.WriteLine("***NEW OUTPUT***");
-                        Trace.WriteLine(output);
-                        return output;
+                        Trace.WriteLine("Fixing repetition");
+                        thisIndex = randomiser.Next(0, Dictionary.Count);
+                        nextKey = Dictionary.ElementAt(thisIndex).Key; 
                     }
+                    else
+                    {
+                        nextKey = splitKey[1] + " " + thisValue;
+                    }
+                                        
+                    count++;
                 }
+                Trace.WriteLine("***NEW OUTPUT***");
+                Trace.WriteLine(output);
+                return output;
             }
             else
             {
                 Trace.WriteLine("Dictionary not made!");
                 return "Dictionary not made!";
             }
-            return "Dictionary not made!";
         }
     }
 }

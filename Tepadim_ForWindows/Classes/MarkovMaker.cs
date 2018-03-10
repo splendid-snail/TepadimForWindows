@@ -10,11 +10,20 @@ namespace Tepadim_ForWindows
 {
     public static class MarkovMaker
     {
-        public static string Status = "Ready";
+        public static string Status;
         private static string LastFile = "";
         public static bool DictionaryMade = false;
         private static IDictionary<string, List<string>> Dictionary = new Dictionary<string, List<string>>();        
         private static Random randomiser = new Random();
+
+
+        public static void ClearDictionary()
+            //Clears the dictionary
+        {
+            Dictionary.Clear();
+            DictionaryMade = false;
+            Status = "Ready";
+        }
 
         private static string ReadFile()
             //Returns a processed string of a .txt file
@@ -68,7 +77,15 @@ namespace Tepadim_ForWindows
                     Dictionary.Add(thisKey, thisValue);
                 }
                 DictionaryMade = true;
-                Status = "New text added \n" + "from " + LastFile;
+                if (clearing)
+                {
+                    Status = "New dictionary started\n" + "from " + LastFile;
+                }
+                else
+                {
+                    Status = "Text added from\n" + "from " + LastFile;
+                }
+                
             }    
         }
 

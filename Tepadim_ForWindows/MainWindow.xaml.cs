@@ -12,12 +12,12 @@ namespace Tepadim_ForWindows
             InitializeComponent();
         }
 
-        private void aboutButton_Click(object sender, RoutedEventArgs e)
+        private void AboutButton_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("TePADiM for Windows: a fortune-telling app in progress.");
         }
 
-        private void listButton_Click(object sender, RoutedEventArgs e)
+        private void ListButton_Click(object sender, RoutedEventArgs e)
         {
             ListWindow listWindow = new ListWindow();
             listWindow.Owner = this;
@@ -25,7 +25,7 @@ namespace Tepadim_ForWindows
             this.Hide();
         }
 
-        private void divineButton_Click(object sender, RoutedEventArgs e)
+        private void DivineButton_Click(object sender, RoutedEventArgs e)
         {
             DivineWindow divineWindow = new DivineWindow();
             divineWindow.Owner = this;
@@ -33,7 +33,7 @@ namespace Tepadim_ForWindows
             this.Hide();
         }
 
-        private void candleButton_Click(object sender, RoutedEventArgs e)
+        private void CandleButton_Click(object sender, RoutedEventArgs e)
         {
             CandleWindow candleWindow = new CandleWindow();
             candleWindow.Owner = this;

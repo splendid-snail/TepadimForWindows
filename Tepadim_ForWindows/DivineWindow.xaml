@@ -12,15 +12,15 @@
         LocationChanged="ListWindowFrame_LocationChanged" Closed="Window_Closed">
     <Grid IsEnabled="True">
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="215" Margin="10,10,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="445"/>
-        <Button x:Name="loadButton" Content="New" HorizontalAlignment="Left" Margin="10,255,0,0" VerticalAlignment="Top" Width="60" Height="57" Click="loadButton_Click"/>
+        <Button x:Name="loadButton" Content="New" HorizontalAlignment="Left" Margin="10,255,0,0" VerticalAlignment="Top" Width="60" Height="57" Click="LoadButton_Click"/>
         <Label x:Name="label" Content="Ready" HorizontalAlignment="Left" Margin="75,255,0,0" VerticalAlignment="Top" Width="270" Height="57"/>
-        <Button x:Name="divineButton" Content="Divine" HorizontalAlignment="Left" Margin="395,255,0,0" VerticalAlignment="Top" Width="60" Height="57" Click="divineButton_Click"/>
+        <Button x:Name="divineButton" Content="Divine" HorizontalAlignment="Left" Margin="395,255,0,0" VerticalAlignment="Top" Width="60" Height="57" Click="DivineButton_Click" IsEnabled="False"/>
         <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="350,233,0,0" VerticalAlignment="Top" Width="105" SelectedIndex="0">
             <System:String>Terse</System:String>
             <System:String>Forthcoming</System:String>
             <System:String>Overwhelming</System:String>
         </ComboBox>
-        <Button x:Name="addButton" Content="Add" HorizontalAlignment="Left" Margin="10,233,0,0" VerticalAlignment="Top" Width="60" IsEnabled="False" Click="addButton_Click"/>
+        <Button x:Name="addButton" Content="Add" HorizontalAlignment="Left" Margin="10,233,0,0" VerticalAlignment="Top" Width="60" IsEnabled="False" Click="AddButton_Click"/>
 
 
     </Grid>

@@ -11,6 +11,7 @@ namespace Tepadim_ForWindows
         public DivineWindow()
         {
             InitializeComponent();
+            MarkovMaker.ClearDictionary();            
             label.Content = MarkovMaker.Status;
         }
 
@@ -25,15 +26,19 @@ namespace Tepadim_ForWindows
             Owner.Top = this.Top;
         }
 
-        private void loadButton_Click(object sender, RoutedEventArgs e)
+        private void LoadButton_Click(object sender, RoutedEventArgs e)
         {
             label.Content = "Loading...";
             MarkovMaker.AddToDictionary(true);
             label.Content = MarkovMaker.Status;
-            addButton.IsEnabled = true;
+            if (MarkovMaker.DictionaryMade)
+            {
+                divineButton.IsEnabled = true;
+                addButton.IsEnabled = true;
+            }            
         }
 
-        private void divineButton_Click(object sender, RoutedEventArgs e)
+        private void DivineButton_Click(object sender, RoutedEventArgs e)
         {
             int lengthChoice= 10;
             if (comboBox.SelectedIndex == 0)
@@ -59,7 +64,7 @@ namespace Tepadim_ForWindows
             }
         }
 
-        private void addButton_Click(object sender, RoutedEventArgs e)
+        private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             MarkovMaker.AddToDictionary(false);
             label.Content = MarkovMaker.Status;            

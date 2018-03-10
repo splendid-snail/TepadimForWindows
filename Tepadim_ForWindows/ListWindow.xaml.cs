@@ -18,7 +18,7 @@ namespace Tepadim_ForWindows
    
         }
 
-        private void makeLine()
+        private void MakeLine()
         {
             int i = randomiser.Next(0, lineList.Count);
             listBox.Items.Add(lineList[i]);
@@ -41,12 +41,12 @@ namespace Tepadim_ForWindows
         {
             for (int i = 0; i < 5; i++)
             {
-                makeLine();
+                MakeLine();
             }
             listBox.Items.Add("");
         }
 
-        private void makeListButton_Click(object sender, RoutedEventArgs e)
+        private void MakeListButton_Click(object sender, RoutedEventArgs e)
         {
             lineList = ListManager.MakeList(15); //User can set
             if (lineList[0] != "-1")
@@ -63,12 +63,12 @@ namespace Tepadim_ForWindows
             }
         }
 
-        private void scryButton_Click(object sender, RoutedEventArgs e)
+        private void ScryButton_Click(object sender, RoutedEventArgs e)
         {
-            makeLine();
+            MakeLine();
         }
 
-        private void backButton_Click(object sender, RoutedEventArgs e)
+        private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

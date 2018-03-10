@@ -18,7 +18,7 @@ namespace Tepadim_ForWindows
 
 
         public static void ClearDictionary()
-            //Clears the dictionary
+            //Clears dictionary.. duh
         {
             Dictionary.Clear();
             DictionaryMade = false;

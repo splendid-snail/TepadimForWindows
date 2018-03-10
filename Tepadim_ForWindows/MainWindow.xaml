@@ -18,8 +18,8 @@
             <Label x:Name="label" Content="TePADiM" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="SimSun-ExtB" FontSize="72" DockPanel.Dock="Top" FontWeight="Bold"/>
             <Label x:Name="label1" Content="for Windows" DockPanel.Dock="Bottom" FontFamily="SimSun-ExtB" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         </DockPanel>
-        <Button x:Name="divineButton" Content="Divine"  Grid.Row="1" Click="divineButton_Click" HorizontalAlignment="Left" Width="478"  />
-        <Button x:Name="listButton" Content="Create and view lists"  Grid.Row="2" Click="listButton_Click"  />
+        <Button x:Name="divineButton" Content="Divine"  Grid.Row="1" Click="divineButton_Click" />
+        <Button x:Name="listButton" Content="Sing"  Grid.Row="2" Click="listButton_Click"  />
         <Button x:Name="candleButton" Content="Light a candle"  Grid.Row="3" Click="candleButton_Click" />
         <Button x:Name="aboutButton" Content="About"  Grid.Row="4" Click="aboutButton_Click" />
 

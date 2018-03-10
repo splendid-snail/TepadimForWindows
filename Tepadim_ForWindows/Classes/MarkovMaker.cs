@@ -76,7 +76,6 @@ namespace Tepadim_ForWindows
             //Produces a (tweaked) Markov chain from Dictionary
         {            
             string output = "";
-
             if (DictionaryMade)
             {
                 //Choose an initial dictionary value

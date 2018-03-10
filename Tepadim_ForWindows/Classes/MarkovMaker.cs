@@ -39,7 +39,7 @@ namespace Tepadim_ForWindows
         }
 
         public static void AddToDictionary(bool clearing)
-            //If true, starts a new dictionary. If false, adds to the current.
+            //If true, start a new dictionary. If false, adds to the current.
         {
             string trimmedText = ReadFile();
             string[] wordListArray = trimmedText.Split(' ');
